@@ -1,0 +1,9 @@
+#wrapper{
+    position: absolute;
+    width: 100%;
+    background-image: url(../images/obsessions.jpg);
+}
+
+span{
+    font-size: 20px;
+}
