@@ -1,4 +1,6 @@
-span{
+#title{
+    width: 30px;
+    height: 200px;
     font-size: 20px;
     position: absolute;
     margin: auto;
