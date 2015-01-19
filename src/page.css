@@ -1,5 +1,10 @@
+html{
+    -webkit-user-select: none;
+    user-select: none;
+}
+
 #title{
-    width: 30px;
+    width: 25px;
     height: 200px;
     font-size: 20px;
     position: absolute;
