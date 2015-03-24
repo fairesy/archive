@@ -3,8 +3,14 @@
     <head>
         <title>UI_advanced_flicking</title>
         <meta charset="utf-8">
-<!--        viewport설정 : device-width에 사이트의 폭을 맞춘다. 페이지가 보이는 기본 비율은 모바일 기기의 가로 해상도에 맞춘다. -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+        <!--
+        [viewport설정]
+        width=device-width : 기기의 폭에 사이트의 폭을 맞춘다. 
+        initial-scale : 페이지가 보이는 기본 비율. 모바일 기기의 가로 해상도(1.0)에 맞춘다. 
+        maximum-scale / minimum-scale : 최대/최소 비율
+        user-scalable : 사용자가 페이지를 줌인-아웃할 수 있는 정도
+-->
         <link rel="stylesheet" type="text/css" href="./reset.css">
         <style type="text/css">
 
@@ -78,30 +84,33 @@
 
         </div>
         <script>
-            function flickContents(flickingArea){
+            function flickContents(flickingArea, left, main, right){
                 var touchedArea = flickingArea;
-                var startX, startY, distanceX, distanceY;
-                var threshold = 20;
-                var restraint = 160;
+                var startX, startY, distanceX, distanceY; //손가락이 움직인거리(distance)와 거리를 구하기 위해 기준점으로 사용할 startPoint
+                var distance_threshold = 20; //좌우 스와이프 기준거리. 이 이상이 되야 유효하다. 20은 임의의 값. 더 짧거나 길 수 있다.
+                var vertical_restraint = 160; //상하 스와이프 기준거리. 이 이하여야 좌우스와이프로 인식한다. 160은 역시 임의의 값.
                 
                 touchedArea.addEventListener('touchstart', function(e){
                     var touchstartPoint = e.changedTouches[0];
-                    distanceX = 0; distanceY = 0;
+                    distanceX = 0; distanceY = 0; //이동거리 초기화.
                     startX = touchstartPoint.pageX;
                     startY = touchstartPoint.pageY;
                 },false);
                 touchedArea.addEventListener('touchmove', function(){
                 },false);
                 touchedArea.addEventListener('touchend', function(e){
+                    
+                    //손가락이 움직인 X,Y 거리를 구한다.
                     var touchendPoint = e.changedTouches[0];
                     distanceX = touchendPoint.pageX - startX;
                     distanceY = touchendPoint.pageY - startY;
                     
-                    var elLeft = document.querySelector(".left");
-                    var elMain = document.querySelector(".main");
-                    var elRight = document.querySelector(".right");
+                    var elLeft = document.querySelector(left);
+                    var elMain = document.querySelector(main);
+                    var elRight = document.querySelector(right);
                     
-                    if(Math.abs(distanceX) >= threshold && Math.abs(distanceY) <= restraint){
+                    //Math.abs(number)는 숫자의 절대값을 반환한다. 좌우이동/상하이동 기준치에 보두 해당할 경우 스와이프에 따른 이벤트를 발생시킨다. 
+                    if(Math.abs(distanceX) >= distance_threshold && Math.abs(distanceY) <= vertical_restraint){
                         if(distanceX < 0){
                             console.log('to the left!!!');
                             elLeft.className = "main flick-content";
@@ -121,11 +130,10 @@
 //                            elLeft.style.webkitTransform = "translate3d(200%,0px,0px)";
                         }
                     }
-                    distanceX = 0; distanceY = 0;
                 },false);
             }
 
-            flickContents(document.getElementById("flicking-area"));
+            flickContents(document.getElementById("flicking-area"), ".left", ".main", ".right");
             
         </script>
     </body>
