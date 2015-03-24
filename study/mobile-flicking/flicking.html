@@ -7,13 +7,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
         <link rel="stylesheet" type="text/css" href="./reset.css">
         <style type="text/css">
+
+            html, body, #container, #view, #flicking-area{
+                height: 100%;
+            }
+            
             body{
                 margin:0;
                 font-size: 13pt;
                 line-height: 1.5;
             }
             .container {
-                background:#fff;
                 border:0;width:100%;
                 display:none;
             }
@@ -37,15 +41,35 @@
                 height:100%;
                 -webkit-transition-property: -webkit-transform;
                 transition-property:-webkit-transform;
-                -webkit-transition-duration:0ms;
-                transition-duration: 0ms;
+                -webkit-transition:600ms ease-in-out;
+                transition:600ms ease-in-out;
             }
-            .main {background-color: green; } .left {background-color: red; } .right {background-color: blue; }
+            .main {
+                width: 100%;
+                height: 100%;
+                background-color: green; 
+                background-image: url(popart.jpg);
+                background-size: cover;
+            } 
+            .left {
+                width: 100%;
+                height: 100%;
+                background-color: red;
+                background-image: url(kinetic.jpg);
+                background-size: cover;
+            } 
+            .right {
+                width: 100%;
+                height: 100%;
+                background-color: blue; 
+                background-image: url(surrealsim.jpg);
+                background-size: cover;
+            }
         </style>
     </head>
     <body>
         <div id="container">
-            <div id="view" style="overflow:hidden;height:600px;">
+            <div id="view" style="overflow:hidden;">
                 <div id="flicking-area" style="-webkit-transition-property:-webkit-transform; transition-property: -webkit-transform; -webkit-transition-duration: 0ms; transition-duration: 0ms; -webkit-transform: translate3d(0%, 0px, 0px);">
                     <div class="left flick-content" style="-webkit-transform: translate3d(0%, 0px, 0px);"></div>
                     <div class="main flick-content" style="-webkit-transform: translate3d(100%, 0px, 0px);"></div>
@@ -53,5 +77,56 @@
                 </div>
 
         </div>
+        <script>
+            function flickContents(flickingArea){
+                var touchedArea = flickingArea;
+                var startX, startY, distanceX, distanceY;
+                var threshold = 20;
+                var restraint = 160;
+                
+                touchedArea.addEventListener('touchstart', function(e){
+                    var touchstartPoint = e.changedTouches[0];
+                    distanceX = 0; distanceY = 0;
+                    startX = touchstartPoint.pageX;
+                    startY = touchstartPoint.pageY;
+                },false);
+                touchedArea.addEventListener('touchmove', function(){
+                },false);
+                touchedArea.addEventListener('touchend', function(e){
+                    var touchendPoint = e.changedTouches[0];
+                    distanceX = touchendPoint.pageX - startX;
+                    distanceY = touchendPoint.pageY - startY;
+                    
+                    var elLeft = document.querySelector(".left");
+                    var elMain = document.querySelector(".main");
+                    var elRight = document.querySelector(".right");
+                    
+                    if(Math.abs(distanceX) >= threshold && Math.abs(distanceY) <= restraint){
+                        if(distanceX < 0){
+                            console.log('to the left!!!');
+                            elLeft.className = "main flick-content";
+                            elMain.className = "right flick-content";
+                            elRight.className = "left flick-content";
+//                            elLeft.style.webkitTransform = "translate3d(100%,0px,0px)";
+//                            elMain.style.webkitTransform = "translate3d(200%,0px,0px)";
+//                            elRight.style.webkitTransform = "translate3d(0%,0px,0px)";
+                        }
+                        else{
+                            console.log('to the right!!!');
+                            elLeft.className = "right flick-content";
+                            elMain.className = "left flick-content";
+                            elRight.className = "main flick-content";
+//                            elRight.style.webkitTransform = "translate3d(100%,0px,0px)";
+//                            elMain.style.webkitTransform = "translate3d(0%,0px,0px)";
+//                            elLeft.style.webkitTransform = "translate3d(200%,0px,0px)";
+                        }
+                    }
+                    distanceX = 0; distanceY = 0;
+                },false);
+            }
+
+            flickContents(document.getElementById("flicking-area"));
+            
+        </script>
     </body>
 </html>
