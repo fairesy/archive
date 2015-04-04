@@ -1,0 +1,45 @@
+@import url(http://fonts.googleapis.com/css?family=Cutive+Mono);* {
+    font-family: 'Cutive Mono', serif; 
+}
+
+html,body{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background-image: url(img/bgpattern.png);
+    background-repeat: repeat;
+}
+
+#wrapper{
+    width: 550px;
+    height: 200px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    text-align: center;
+}
+
+ul{
+    width: 100%;
+    height: 33%;
+    display: inline-block;
+/*    border: 1px solid grey;*/
+}
+li{
+    width: 45px;
+    height: 45px;
+    margin: 3px;
+    color: #909090;
+    opacity: 0.8;
+    border: 1px solid #909090;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 45px;
+    display: inline-block;
+    float: left;
+}

@@ -77,9 +77,9 @@
         <div id="container">
             <div id="view" style="overflow:hidden;">
                 <div id="flicking-area" style="-webkit-transition-property:-webkit-transform; transition-property: -webkit-transform; -webkit-transition-duration: 0ms; transition-duration: 0ms; transform: translate3d(0%, 0px, 0px);-webkit-transform: translate3d(0%, 0px, 0px);">
-                    <div class="left flick-content" style="transform: translate3d(0%, 0px, 0px);-webkit-transform: translate3d(0%, 0px, 0px);"></div>
-                    <div class="main flick-content" style="transform: translate3d(100%, 0px, 0px);-webkit-transform: translate3d(100%, 0px, 0px);"></div>
-                    <div class="right flick-content" style="transform: translate3d(200%, 0px, 0px);-webkit-transform: translate3d(200%, 0px, 0px);"></div>
+                    <div class="left flick-content" style="-webkit-transform: translate3d(0%, 0px, 0px);"></div>
+                    <div class="main flick-content" style="-webkit-transform: translate3d(100%, 0px, 0px);"></div>
+                    <div class="right flick-content" style="-webkit-transform: translate3d(200%, 0px, 0px);"></div>
                 </div>
 
         </div>
@@ -96,7 +96,7 @@
                     startX = touchstartPoint.pageX;
                     startY = touchstartPoint.pageY;
                 },false);
-                touchedArea.addEventListener('touchmove', function(){
+                touchedArea.addEventListener('touchmove', function(e){
                 },false);
                 touchedArea.addEventListener('touchend', function(e){
                     
@@ -108,26 +108,35 @@
                     var elLeft = document.querySelector(left);
                     var elMain = document.querySelector(main);
                     var elRight = document.querySelector(right);
-                    
+//                    
+//                    var elLeft = document.querySelector(".left");
+//                    var elMain = document.querySelector(".main");
+//                    var elRight = document.querySelector(".right");
+//                    
                     //Math.abs(number)는 숫자의 절대값을 반환한다. 좌우이동/상하이동 기준치에 보두 해당할 경우 스와이프에 따른 이벤트를 발생시킨다. 
                     if(Math.abs(distanceX) >= distance_threshold && Math.abs(distanceY) <= vertical_restraint){
                         if(distanceX < 0){
                             console.log('to the left!!!');
-                            elLeft.className = "main flick-content";
-                            elMain.className = "right flick-content";
-                            elRight.className = "left flick-content";
-//                            elLeft.style.webkitTransform = "translate3d(100%,0px,0px)";
-//                            elMain.style.webkitTransform = "translate3d(200%,0px,0px)";
+                            console.log("this : "+this+"target : "+e.target.className);
+                            elLeft.style.webkitTransform = "translate3d(100%,0px,0px)";
+                            elMain.style.webkitTransform = "translate3d(200%,0px,0px)";
 //                            elRight.style.webkitTransform = "translate3d(0%,0px,0px)";
+//                            
+//                            elLeft.className = "main flick-content";
+//                            elMain.className = "right flick-content";
+//                            elRight.className = "left flick-content";
                         }
                         else{
                             console.log('to the right!!!');
-                            elLeft.className = "right flick-content";
-                            elMain.className = "left flick-content";
-                            elRight.className = "main flick-content";
-//                            elRight.style.webkitTransform = "translate3d(100%,0px,0px)";
-//                            elMain.style.webkitTransform = "translate3d(0%,0px,0px)";
+                            console.log("this : "+this+"target : "+e.target.className);
+                            elRight.style.webkitTransform = "translate3d(100%,0px,0px)";
+                            elMain.style.webkitTransform = "translate3d(0%,0px,0px)";
 //                            elLeft.style.webkitTransform = "translate3d(200%,0px,0px)";
+//                            
+//                            elLeft.className = "right flick-content";
+//                            elMain.className = "left flick-content";
+//                            elRight.className = "main flick-content";
+                           
                         }
                     }
                 },false);
