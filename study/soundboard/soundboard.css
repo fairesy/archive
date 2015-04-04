@@ -24,6 +24,7 @@ ul{
     height: 30%;
     display: inline-block;
     list-style: none;
+    float: left;
 }
 li{
     width: 30px;
