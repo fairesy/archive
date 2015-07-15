@@ -1,0 +1,137 @@
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" href="./reset.css">
+        <style>
+            @import url(http://fonts.googleapis.com/css?family=Ubuntu);
+            
+            html,body{
+                width: 100%;
+                height: 100%;
+                background-image: url(./paper.png);
+                background-repeat: repeat;
+            }
+            section{
+                width: 100%;
+                height: 100%;
+                background-color: transparent;
+            }
+            .center{
+                position: absolute;
+                margin: auto;
+                left: 0;
+                right: 0;
+            }
+            div.drawing{
+                bottom: 0;
+                width: 400px;
+                height: 600px;
+                background-image: url(./02_main_hand_drawing);
+            }
+            div.message{
+                width: 400px;
+                height: 400px;
+                top: 20%;
+                opacity: 0;
+                background-image: url(./02_hello_message.png);
+            }
+            @keyframes show{
+                from{
+                    opacity: 0;
+                    transform: translateY(-25px);
+                }
+                to{
+                    opacity: 1;
+                    transform: translateY(0px);
+                }
+            }
+            .show {
+                animation-name: show;
+                animation-fill-mode: forwards;
+                animation-duration: 1s;
+                animation-delay: 1s;
+            }
+            @keyframes hello{
+                0%{
+                    transform: rotate(6deg);
+                }
+                25%{
+                    transform: rotate(-5deg);
+                }
+                50%{
+                    transform: rotate(4deg);
+                }
+                75%{
+                    transform: rotate(-3deg);
+                }
+                100%{
+                    transform: rotate(0deg);
+                }
+            }
+            .hello{
+                transform-origin: bottom;
+                animation-name: hello;
+                animation-duration: 2s;
+                animation-fill-mode: forwards;
+            }
+            @keyframes blur{
+                from{
+                    opacity: 1;
+                }
+                to{
+                    opacity: 0.3;
+                }
+            }
+            .blur{
+                animation: blur .8s forwards;
+            }
+            
+            button{
+                bottom: 50px;
+                width: 150px;
+                height: 30px;
+                background-color: rgb(40,40,40);
+                opacity: 0;
+                color: #ffffff;
+                font-size: 14px;
+                font-family: "Ubuntu",sans-serif;
+                font-weight: 100;
+                border-color: transparent;
+                border-radius: 5px;
+                
+                transition: ease-in-out .2s;
+            }
+            button:hover{
+                background-color: transparent;
+                color: rgb(40,40,40);
+                font-weight: 300;
+                border-color: rgb(40,40,40);
+                cursor: pointer;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <section>
+            <div class="drawing center hello"></div>
+            <div class="message center show"></div>
+            <a href="./page02.html">
+                <button id="continue" class="center">continue</button>
+            </a>
+        </section>
+        
+        <script>
+            document.addEventListener("DOMContentLoaded", function(){
+                var message = document.querySelector(".message");
+                var drawing = document.querySelector(".drawing");
+                var section = document.getElementsByTagName("section")[0];
+                var nextButton = document.getElementById("continue");
+                message.addEventListener("animationend", function(){
+                    drawing.classList.add("blur");
+                    nextButton.classList.add("show");
+                }); 
+            });
+        </script>
+    </body>
+</html>

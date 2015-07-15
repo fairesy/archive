@@ -1,0 +1,53 @@
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="./reset.css">
+	<link rel="stylesheet" href="./common.css">
+	<style>
+        @import url(http://fonts.googleapis.com/css?family=Noto+Sans);
+        @import url(http://fonts.googleapis.com/css?family=Ubuntu);
+        html,body{
+            width: 100%;
+            height: 100%;
+            background-color: #000000;
+            color: #ffffff;
+            font-family: "Noto Sans", sans-serif;
+            font-weight: 300;
+        }
+        section{
+            width: 100%;
+            height: 100%;
+        }
+        .center{
+            position: absolute;
+            margin: auto;
+            left: 0;
+            right: 0;
+            
+        }
+        .container{
+            width: 500px;
+            height: 100px;
+            text-align: center;
+            line-height: 20px;
+            top: 0;
+            bottom: 0;
+        }
+        .container span.fromBottom{
+            font-size: 20px;
+            opacity: 0;
+            line-height: 50px;
+            animation-delay: 1s;
+        }
+    </style>
+</head>
+<body class="fadeIn">
+   <section>
+       <div class="container center">
+           <span>그래서인지 저는 이런 질문을 유독 많이 받아요</span><br>
+           <span class="fromBottom">"그렇게 이것저것 배워서 대체 뭘 하려는 거야?"</span>
+       </div>
+   </section>
+</body>
+</html>
