@@ -40,6 +40,32 @@
             line-height: 50px;
             animation-delay: 2s;
         }
+        button{
+            bottom: 50px;
+            width: 150px;
+            height: 30px;
+            background-color: transparent;
+            opacity: 0;
+            color: rgba(255,255,255,0.8);
+            font-size: 14px;
+            font-family: "Ubuntu",sans-serif;
+            font-weight: 100;
+            border : 2px solid rgba(255,255,255,0.8);
+            border-radius: 5px;
+
+            transition: ease-in-out .2s;
+            
+            animation: fromBottom .8s forwards;
+            animation-delay: 3.5s;
+            
+        }
+        button:hover{
+            background-color: rgba(255,255,255,0.8);
+            color: rgb(40,40,40);
+            font-weight: 300;
+            border-color: transparent;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body class="fadeIn">
@@ -48,6 +74,9 @@
            <span>그래서인지 저는 이런 질문을 유독 많이 받아요</span><br>
            <span class="fromBottom">"그렇게 이것저것 배워서 대체 뭘 하려는 거야?"</span>
        </div>
+       <a href="./page05.html">
+           <button class="center">그러니까....</button>
+       </a>
    </section>
 </body>
 </html>
