@@ -1,0 +1,107 @@
+<html>
+    <head>
+        <title></title>
+        <link rel="stylesheet" href="./reset.css">
+        <meta charset="utf-8">
+        <style>
+            @import url(http://fonts.googleapis.com/css?family=Noto+Sans);
+            @import url(http://fonts.googleapis.com/css?family=Ubuntu);
+            
+            html,body{
+                width: 100%;
+                height: 100%;
+            }
+            section{
+                width: 100%;
+                height: 100%;
+                background-color: #000000;
+            }
+            .center{
+                position: absolute;
+                margin: auto;
+                left: 0;
+                right: 0;
+            }
+            .container{
+                width: 500px;
+                height: 50px;
+                top: 0;
+                bottom: 0;
+                padding-left: 40px;
+                font-size: 20px;
+                color: #ffffff;
+                font-family: "Noto Sans", sans-serif;
+/*                font-family: "Ubuntu",sans-serif;*/
+            }
+            
+            @keyframes talking_from_top{
+                from{
+                    opacity: 0;
+                    transform: translateY(-15px);
+                }
+                to{
+                    opacity: 1;
+                    transform: translateY(0px);
+                }
+            }
+            @keyframes talking_from_bottom{
+                from{
+                    opacity: 0;
+                    transform: translateY(15px);
+                }
+                to{
+                    opacity: 1;
+                    transform: translateY(0px);
+                }            
+            }
+            .container span:nth-child(2n+1){
+                opacity: 0;
+                animation: talking_from_top 1.5s forwards;
+                animation-delay: .2s;
+            }
+            .container span:nth-child(2n){
+                opacity: 0;
+                animation: talking_from_bottom 1.5s forwards;
+                animation-delay: .2s;
+            }
+            
+            @keyframes squeeze_vertically{
+                100%{
+                    transform: scaleY(-0.1);
+                }
+            }
+            .squeeze_vertically{
+                transform-origin: top;
+                animation: squeeze_vertically .8s forwards;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <section>
+            <div class="container center">
+                <span>제 이름은</span>
+                <span>박</span><span>신</span><span>영</span>
+                <span>입니다</span>
+            </div>
+        </section>
+        
+        <script>
+            document.addEventListener("DOMContentLoaded", function(){
+                var text = document.querySelector("span");
+                text.addEventListener("animationend", function(){
+                    var section = document.querySelector("section");
+                    var container = document.querySelector("div");
+                    setTimeout(function(){
+                        section.classList.add("squeeze_vertically");
+                        setTimeout(function(){
+                            container.style.display = "none";
+                            location.href = "./page03.html";
+                        }, 700);
+                    }, 900)
+                    
+                });
+            });
+        </script>
+    </body>
+</html>

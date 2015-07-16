@@ -1,0 +1,24 @@
+@keyframes fromBottom{
+    from{
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+.fromBottom{
+    animation: fromBottom .8s forwards;
+}
+@keyframes fadeIn{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+.fadeIn{
+    animation: fadeIn .8s forwards;
+}
