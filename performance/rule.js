@@ -1,165 +1,13 @@
 function convertToNotes(inputCharArray){
-	var resultNotes = '';
+	var notes = new Array();
+
 	for(var i=0; i<inputCharArray.length; i++){
 		var character = inputCharArray[i];
-		var noteTemplate = "<note><pitch><step><%step%></step><octave><%octave%></octave></pitch><duration>1</duration></note>";
+		//8분음표 음표 템플릿
+		var noteTemplate = "<note><pitch><%=stepAndOctave=></pitch><duration>1</duration><voice>1</voice><type>quarter</type><stem>down</stem></note>";
+		//4분음표-프로토타입 템플릿
+		//var noteTemplate = "<note><pitch><step><%step%></step><octave><%octave%></octave></pitch><duration>1</duration></note>";
 		var step,octave;
-
-		// switch(character){
-		// 	case 'ㄱ':
-		// 		step = 'E';
-		// 		octave = 3;
-		// 	case 'ㄴ':
-		// 		step = 'F';
-		// 		octave = 3;
-		// 	case 'ㄷ':
-		// 		step = 'G';
-		// 		octave = 3;
-		// 	case 'ㄹ':
-		// 		step = 'A';
-		// 		octave = 3;
-		// 	case 'ㅁ':
-		// 		step = 'B';
-		// 		octave = 3;
-		// 	case 'ㅂ':
-		// 		step = 'C';
-		// 		octave = 4;
-		// 	case 'ㅅ':
-		// 		step = 'D';
-		// 		octave = 4;
-		// 	case 'ㅇ':
-		// 		step = 'E';
-		// 		octave = 4;
-		// 	case 'ㅈ':
-		// 		step = 'F';
-		// 		octave = 4;
-		// 	case 'ㅊ':
-		// 		step = 'G';
-		// 		octave = 4;
-		// 	case 'ㅋ':
-		// 		step = 'A';
-		// 		octave = 4;
-		// 	case 'ㅌ':
-		// 		step = 'B';
-		// 		octave = 4;
-		// 	case 'ㅍ':
-		// 		step = 'C';
-		// 		octave = 5;
-		// 	case 'ㅎ':
-		// 		step = 'D';
-		// 		octave = 5;
-		// 	case 'ㄲ':
-		// 		step = 'G';
-		// 		octave = 2;
-		// 	case 'ㄸ':
-		// 		step = 'A';
-		// 		octave = 2;
-		// 	case 'ㅃ':
-		// 		step = 'B';
-		// 		octave = 2;
-		// 	case 'ㅆ':
-		// 		step = 'C';
-		// 		octave = 2;
-		// 	case 'ㅉ':
-		// 		step = 'D';
-		// 		octave = 2;
-		// 	case 'ㄳ':
-		// 		step = 'C';
-		// 		octave = 1;
-		// 	case 'ㄵ':
-		// 		step = 'D';
-		// 		octave = 1;
-		// 	case 'ㄶ':
-		// 		step = 'E';
-		// 		octave = 1;
-		// 	case 'ㄺ':
-		// 		step = 'F';
-		// 		octave = 1;
-		// 	case 'ㄻ':
-		// 		step = 'G';
-		// 		octave = 1;
-		// 	case 'ㄼ':
-		// 		step = 'A';
-		// 		octave = 1;
-		// 	case 'ㄽ':
-		// 		step = 'B';
-		// 		octave = 1;
-		// 	case 'ㄾ':
-		// 		step = 'C';
-		// 		octave = 2;
-		// 	case 'ㄿ':
-		// 		step = 'D';
-		// 		octave = 2;
-		// 	case 'ㅀ':
-		// 		step = 'E';
-		// 		octave = 2;
-		// 	case 'ㅄ':
-		// 		step = 'F';
-		// 		octave = 2;
-		// 	case 'ㅏ':
-		// 		step = 'E';
-		// 		octave = 5;
-		// 	case 'ㅑ':
-		// 		step = 'F';
-		// 		octave = 5;
-		// 	case 'ㅓ':
-		// 		step = 'G';
-		// 		octave = 5;
-		// 	case 'ㅕ':
-		// 		step = 'A';
-		// 		octave = 5;
-		// 	case 'ㅗ':
-		// 		step = 'B';
-		// 		octave = 5;
-		// 	case 'ㅛ':
-		// 		step = 'C';
-		// 		octave = 6;
-		// 	case 'ㅜ':
-		// 		step = 'D';
-		// 		octave = 6;
-		// 	case 'ㅠ':
-		// 		step = 'E';
-		// 		octave = 6;
-		// 	case 'ㅡ':
-		// 		step = 'F';
-		// 		octave = 6;
-		// 	case 'ㅣ':
-		// 		step = 'G';
-		// 		octave = 6;
-		// 	case 'ㅐ':
-		// 		step = 'A';
-		// 		octave = 6;
-		// 	case 'ㅒ':
-		// 		step = 'B';
-		// 		octave = 6;
-		// 	case 'ㅔ':
-		// 		step = 'C';
-		// 		octave = 7;
-		// 	case 'ㅖ':
-		// 		step = 'D';
-		// 		octave = 7;
-		// 	case 'ㅘ':
-		// 		step = 'E';
-		// 		octave = 7;
-		// 	case 'ㅙ':
-		// 		step = 'F';
-		// 		octave = 7;
-		// 	case 'ㅚ':
-		// 		step = 'G';
-		// 		octave = 7;
-		// 	case 'ㅝ':
-		// 		step = 'A';
-		// 		octave = 7;
-		// 	case 'ㅞ':
-		// 		step = 'B';
-		// 		octave = 7;
-		// 	case 'ㅟ':
-		// 		step = 'C';
-		// 		octave = 8;
-		// 	case 'ㅢ':
-		// 		step = 'D';
-		// 		octave = 8;
-		// }
 
 		if(character == 'ㄱ'){
 			step = 'E';
@@ -320,10 +168,39 @@ function convertToNotes(inputCharArray){
 		}
 
 		// console.log(character + typeof(character) + "	step:" + step + " octave:" + octave);
-		var ruledNote = noteTemplate.replace("<%step%>", step);
-		var finalNote = ruledNote.replace("<%octave%>", octave);
-		resultNotes = resultNotes.concat(finalNote);
+		var replaceNoteOctaveString = "<step>" + step + "</step>" + "<octave>" + octave + "</octave>";
+		var ruledNote = noteTemplate.replace("<%=stepAndOctave=>", replaceNoteOctaveString);
+		notes[i] = ruledNote;		
+		// resultNotes = resultNotes.concat(finalNote);
 	}	
-	return resultNotes;
-}
+	return notes;
+};
 
+function convertToMeasures(notesArray){
+	var measureCount = 1;
+	var noteCount = 1;
+	var partCount = 1;
+	var printAndAttributes = "<print><system-layout><system-margins><left-margin>0.00</left-margin><right-margin>-0.00</right-margin></system-margins><top-system-distance>170.00</top-system-distance></system-layout></print><attributes><divisions>2</divisions><key><fifths>0</fifths></key><time><beats>4</beats><beat-type>4</beat-type></time><clef><sign>G</sign><line>2</line></clef></attributes>";
+	var measureOpen = "<measure number='" + measureCount + "'>"; //width무쓸모.....
+	var measureClose = "</measure>";
+	var measures = "";
+
+	for (var i = 0; i<notesArray.length; i++) {
+		//첫번째 마디 첫번째 음표.
+		if(i==0){
+			measures += measureOpen;
+			measures += printAndAttributes;
+			measures += notesArray[i];
+			noteCount++;
+		}else{
+			measures += notesArray[i];
+			if(noteCount%4 == 0){
+				measures += measureClose;
+				measureCount++;
+				measures += measureOpen;
+			}
+			noteCount++;
+		}
+	};
+	return measures;
+}
