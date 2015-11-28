@@ -7,180 +7,235 @@ function convertToNotes(inputCharArray){
 		var noteTemplate = "<note><pitch><%=stepAndOctave=></pitch><duration>1</duration><voice>1</voice><type>quarter</type><stem>down</stem></note>";
 		//4분음표-프로토타입 템플릿
 		//var noteTemplate = "<note><pitch><step><%step%></step><octave><%octave%></octave></pitch><duration>1</duration></note>";
-		var step,octave;
+		var step,octave,sharp;
 
 		if(character == 'ㄱ'){
-			step = 'E';
-			octave = 3;
-		}else if(character == 'ㄴ'){
-			step = 'F';
-			octave = 3;
-		}else if(character == 'ㄷ'){
-			step = 'G';
-			octave = 3;
-		}else if(character == 'ㄹ'){
-			step = 'A';
-			octave = 3;
-		}else if(character == 'ㅁ'){
-			step = 'B';
-			octave = 3;
-		}else if(character == 'ㅂ'){
 			step = 'C';
 			octave = 4;
-		}else if(character == 'ㅅ'){
+			sharp = false;
+		}else if(character == 'ㄴ'){
+			step = 'C';
+			octave = 4;
+			sharp = true;
+		}else if(character == 'ㄷ'){
 			step = 'D';
 			octave = 4;
-		}else if(character == 'ㅇ'){
+			sharp = false;
+		}else if(character == 'ㄹ'){
+			step = 'D';
+			octave = 4;
+			sharp = true;
+		}else if(character == 'ㅁ'){
 			step = 'E';
 			octave = 4;
-		}else if(character == 'ㅈ'){
+			sharp = false;
+		}else if(character == 'ㅂ'){
 			step = 'F';
 			octave = 4;
-		}else if(character == 'ㅊ'){
+			sharp = false;
+		}else if(character == 'ㅅ'){
+			step = 'F';
+			octave = 4;
+			sharp = true;
+		}else if(character == 'ㅇ'){
 			step = 'G';
 			octave = 4;
+			sharp = false;
+		}else if(character == 'ㅈ'){
+			step = 'G';
+			octave = 4;
+			sharp = true;
+		}else if(character == 'ㅊ'){
+			step = 'A';
+			octave = 4;
+			sharp = false;
 		}else if(character == 'ㅋ'){
 			step = 'A';
 			octave = 4;
+			sharp = true;
 		}else if(character == 'ㅌ'){
 			step = 'B';
 			octave = 4;
+			sharp = false;
 		}else if(character == 'ㅍ'){
 			step = 'C';
 			octave = 5;
+			sharp = false;
 		}else if(character == 'ㅎ'){
-			step = 'D';
+			step = 'C';
 			octave = 5;
+			sharp = true;
 		}else if(character == 'ㄲ'){
 			step = 'G';
 			octave = 2;
+			sharp = true;
 		}else if(character == 'ㄸ'){
 			step = 'A';
 			octave = 2;
+			sharp = false;
 		}else if(character == 'ㅃ'){
+			step = 'A';
+			octave = 2;
+			sharp = true;
+		}else if(character == 'ㅆ'){
 			step = 'B';
 			octave = 2;
-		}else if(character == 'ㅆ'){
-			step = 'C';
-			octave = 2;
+			sharp = false;
 		}else if(character == 'ㅉ'){
-			step = 'D';
-			octave = 2;
+			step = 'C';
+			octave = 3;
+			sharp = false;
 		}else if(character == 'ㄳ'){
 			step = 'C';
-			octave = 1;
+			octave = 3;
+			sharp = true;
 		}else if(character == 'ㄵ'){
 			step = 'D';
-			octave = 1;
+			octave = 3;
+			sharp = false;
 		}else if(character == 'ㄶ'){
-			step = 'E';
-			octave = 1;
-		}else if(character == 'ㄺ'){
-			step = 'F';
-			octave = 1;
-		}else if(character == 'ㄻ'){
-			step = 'G';
-			octave = 1;
-		}else if(character == 'ㄼ'){
-			step = 'A';
-			octave = 1;
-		}else if(character == 'ㄽ'){
-			step = 'B';
-			octave = 1;
-		}else if(character == 'ㄾ'){
-			step = 'C';
-			octave = 2;
-		}else if(character == 'ㄿ'){
 			step = 'D';
-			octave = 2;
+			octave = 3;
+			sharp = true;
+		}else if(character == 'ㄺ'){
+			step = 'E';
+			octave = 3;
+			sharp = false;
+		}else if(character == 'ㄻ'){
+			step = 'F';
+			octave = 3;
+			sharp = false;
+		}else if(character == 'ㄼ'){
+			step = 'F';
+			octave = 3;
+			sharp = true;
+		}else if(character == 'ㄽ'){
+			step = 'G';
+			octave = 3;
+			sharp = false;
+		}else if(character == 'ㄾ'){
+			step = 'G';
+			octave = 3;
+			sharp = true;
+		}else if(character == 'ㄿ'){
+			step = 'A';
+			octave = 3;
+			sharp = false;
 		}else if(character == 'ㅀ'){
-			step = 'E';
-			octave = 2;
+			step = 'A';
+			octave = 3;
+			sharp = true;
 		}else if(character == 'ㅄ'){
-			step = 'F';
-			octave = 2;
+			step = 'B';
+			octave = 3;
+			sharp = false;
 		}else if(character == 'ㅏ'){
+			step = 'D';
+			octave = 5;
+			sharp = false;
+		}else if(character == 'ㅑ'){
+			step = 'D';
+			octave = 5;
+			sharp = true;
+		}else if(character == 'ㅓ'){
 			step = 'E';
 			octave = 5;
-		}else if(character == 'ㅑ'){
+			sharp = false;
+		}else if(character == 'ㅕ'){
 			step = 'F';
 			octave = 5;
-		}else if(character == 'ㅓ'){
+			sharp = false;
+		}else if(character == 'ㅗ'){
+			step = 'F';
+			octave = 5;
+			sharp = true;
+		}else if(character == 'ㅛ'){
 			step = 'G';
 			octave = 5;
-		}else if(character == 'ㅕ'){
-			step = 'A';
-			octave = 5;
-		}else if(character == 'ㅗ'){
-			step = 'B';
-			octave = 5;
-		}else if(character == 'ㅛ'){
-			step = 'C';
-			octave = 6;
+			sharp = false;
 		}
 		else if(character == 'ㅜ'){
-			step = 'D';
-			octave = 6;
+			step = 'G';
+			octave = 5;
+			sharp = true;
 		}
 		else if(character == 'ㅠ'){
-			step = 'E';
-			octave = 6;
+			step = 'A';
+			octave = 5;
+			sharp = false;
 		}
 		else if(character == 'ㅡ'){
-			step = 'F';
-			octave = 6;
-		}else if(character == 'ㅣ'){
-			step = 'G';
-			octave = 6;
-		}else if(character == 'ㅐ'){
 			step = 'A';
-			octave = 6;
-		}else if(character == 'ㅒ'){
+			octave = 5;
+			sharp = true;
+		}else if(character == 'ㅣ'){
 			step = 'B';
-			octave = 6;
-		}else if(character == 'ㅔ'){
+			octave = 5;
+			sharp = false;
+		}else if(character == 'ㅐ'){
 			step = 'C';
-			octave = 7;
+			octave = 6;
+			sharp = false;
+		}else if(character == 'ㅒ'){
+			step = 'C';
+			octave = 6;
+			sharp = true;
+		}else if(character == 'ㅔ'){
+			step = 'D';
+			octave = 6;
+			sharp = true;
 		}else if(character == 'ㅖ'){
 			step = 'D';
-			octave = 7;
+			octave = 6;
+			sharp = true;
 		}else if(character == 'ㅘ'){
 			step = 'E';
-			octave = 7;
+			octave = 6;
+			sharp = false;
 		}else if(character == 'ㅙ'){
 			step = 'F';
-			octave = 7;
+			octave = 6;
+			sharp = false;
 		}else if(character == 'ㅚ'){
-			step = 'G';
-			octave = 7;
+			step = 'F';
+			octave = 6;
+			sharp = true;
 		}else if(character == 'ㅝ'){
-			step = 'A';
-			octave = 7;
+			step = 'G';
+			octave = 6;
+			sharp = false;
 		}else if(character == 'ㅞ'){
-			step = 'B';
-			octave = 7;
+			step = 'G';
+			octave = 6;
+			sharp = true;
 		}else if(character == 'ㅟ'){
-			step = 'C';
-			octave = 8;
+			step = 'A';
+			octave = 6;
+			sharp = false;
 		}else if(character == 'ㅢ'){
-			step = 'D';
-			octave = 8;
+			step = 'A';
+			octave = 6;
+			sharp = true;
 		}
 
 		// console.log(character + typeof(character) + "	step:" + step + " octave:" + octave);
-		var replaceNoteOctaveString = "<step>" + step + "</step>" + "<octave>" + octave + "</octave>";
+		var replaceNoteOctaveString;
+		if(sharp){//sharp
+			replaceNoteOctaveString = "<step>" + step + "</step>" + "<alter>1</alter>" + "<octave>" + octave + "</octave>";
+		}else{//natural
+			replaceNoteOctaveString = "<step>" + step + "</step>" + "<octave>" + octave + "</octave>";
+		}
 		var ruledNote = noteTemplate.replace("<%=stepAndOctave=>", replaceNoteOctaveString);
+
 		notes[i] = ruledNote;		
-		// resultNotes = resultNotes.concat(finalNote);
 	}	
 	return notes;
 };
 
 function convertToMeasures(notesArray){
-	var measureCount = 1;
+	var measureCount;
 	var noteCount = 1;
-	var partCount = 1;
-	var printAndAttributes = "<print><system-layout><system-margins><left-margin>0.00</left-margin><right-margin>-0.00</right-margin></system-margins><top-system-distance>170.00</top-system-distance></system-layout></print><attributes><divisions>2</divisions><key><fifths>0</fifths></key><time><beats>4</beats><beat-type>4</beat-type></time><clef><sign>G</sign><line>2</line></clef></attributes>";
+	var printAndAttributes = "<print><system-layout><system-margins><left-margin>0.00</left-margin><right-margin>-0.00</right-margin></system-margins><top-system-distance>170.00</top-system-distance></system-layout></print><attributes><divisions>1</divisions><key><fifths>0</fifths></key><time><beats>4</beats><beat-type>4</beat-type></time><clef><sign>G</sign><line>2</line></clef></attributes>";
 	var measureOpen = "<measure number='" + measureCount + "'>"; //width무쓸모.....
 	var measureClose = "</measure>";
 	var measures = "";
@@ -188,16 +243,26 @@ function convertToMeasures(notesArray){
 	for (var i = 0; i<notesArray.length; i++) {
 		//첫번째 마디 첫번째 음표.
 		if(i==0){
-			measures += measureOpen;
+			measureCount = 1;
+			//measures += measureOpen;
+			measures += "<measure number='" + measureCount + "'>";
 			measures += printAndAttributes;
 			measures += notesArray[i];
 			noteCount++;
-		}else{
+		}
+		else if(i==notesArray.length-1){//마지막음표
+			measures += notesArray[i];
+			measures += '<barline location="right"><bar-style>light-heavy</bar-style></barline>';
+			measures += measureClose;
+			noteCount++;
+		}
+		else{
 			measures += notesArray[i];
 			if(noteCount%4 == 0){
 				measures += measureClose;
-				measureCount++;
-				measures += measureOpen;
+				measureCount += 1;
+				//measures += measureOpen;
+				measures += "<measure number='" + measureCount + "'>";
 			}
 			noteCount++;
 		}
