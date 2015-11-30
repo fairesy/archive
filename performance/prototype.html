@@ -34,6 +34,8 @@
 		var textInput = document.getElementById("input");
 		var title = document.getElementById("title");
 		convertButton.addEventListener("click", function(){
+			console.log("original message-----------------------------");
+			console.log(textInput.value);
 			var result = textInput.value.toKorChars();
 			// console.log(result);
 			var convertedNotes = convertToNotes(result);
