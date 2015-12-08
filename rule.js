@@ -183,7 +183,7 @@ function convertToNotes(inputCharArray){
 		}else if(character == 'ㅔ'){
 			step = 'D';
 			octave = 6;
-			sharp = true;
+			sharp = false;
 		}else if(character == 'ㅖ'){
 			step = 'D';
 			octave = 6;
